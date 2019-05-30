@@ -274,8 +274,8 @@
 <ol><br><li>Bird</li><br><li>McHale</li><br><li>Parish</li><br></ol>
 </blockquote>
 <h2 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h2><p>这是一个普通段落：</p>
-<pre><code>这是一个代码区块。
-</code></pre><p>这是一个普通段落：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是一个代码区块。</span><br></pre></td></tr></table></figure>
+<p>这是一个普通段落：</p>
 
 <pre><code>这是一个代码区块。
 </code></pre>
@@ -303,9 +303,8 @@
 <p>效果<br>This is <a href="http://example.com/" title="Optional Title Here" target="_blank" rel="noopener">an example</a> reference-style link.</p>
 </blockquote>
 <p>锚点使用</p>
-<pre><code>[说明文字](#jump)
-&lt;span id = &quot;jump&quot;&gt;跳转到的位置&lt;/span&gt;
-</code></pre><h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><p>Markdown 使用星号（<em>）和底线（_）作为标记强调字词的符号，被 </em> 或 _ 包围的字词会被转成用 <code>&lt;em&gt;</code> 标签包围，用两个 * 或 _ 包起来的话，则会被转成 <code>&lt;strong&gt;</code>，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[说明文字](#jump)</span><br><span class="line">&lt;span id = &quot;jump&quot;&gt;跳转到的位置&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><p>Markdown 使用星号（<em>）和底线（_）作为标记强调字词的符号，被 </em> 或 _ 包围的字词会被转成用 <code>&lt;em&gt;</code> 标签包围，用两个 * 或 _ 包起来的话，则会被转成 <code>&lt;strong&gt;</code>，例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">*single asterisks*</span><br><span class="line"></span><br><span class="line">_single underscores_</span><br><span class="line"></span><br><span class="line">**double asterisks**</span><br><span class="line"></span><br><span class="line">__double underscores__</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>效果</p>
@@ -315,13 +314,13 @@
 <p><strong>double underscores</strong> </p>
 </blockquote>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>如果要标记一小段行内代码，你可以用反引号把它包起来（`），例如：</p>
-<pre><code>Use the `printf()` function.
-</code></pre><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Use the `printf()` function.</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p>效果<br>Use the <code>printf()</code> function.</p>
 </blockquote>
 <p>如果要在代码区段内插入反引号，你可以用多个反引号来开启和结束代码区段：</p>
-<pre><code>``There is a literal backtick (`) here.``
-</code></pre><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">``There is a literal backtick (`) here.``</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p>效果<br><code>There is a literal backtick (`) here.</code></p>
 </blockquote>
 <p>(<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
@@ -353,7 +352,7 @@
 <p><a href="http://example.com/" target="_blank" rel="noopener">http://example.com/</a></p>
 <p>邮址的自动链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以糊弄一些不好的邮址收集机器人，例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;address@example.com&gt;</span><br></pre></td></tr></table></figure>
-<p><a href="mailto:&#97;&#100;&#100;&#x72;&#101;&#x73;&#x73;&#64;&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#99;&#x6f;&#x6d;" target="_blank" rel="noopener">&#97;&#100;&#100;&#x72;&#101;&#x73;&#x73;&#64;&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#99;&#x6f;&#x6d;</a></p>
+<p><a href="mailto:&#x61;&#100;&#100;&#x72;&#101;&#x73;&#x73;&#x40;&#101;&#120;&#97;&#109;&#112;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;" target="_blank" rel="noopener">&#x61;&#100;&#100;&#x72;&#101;&#x73;&#x73;&#x40;&#101;&#120;&#97;&#109;&#112;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;</a></p>
   </article>
   <aside class="table-content" id="site-toc">
   <div class="table-content-title">
