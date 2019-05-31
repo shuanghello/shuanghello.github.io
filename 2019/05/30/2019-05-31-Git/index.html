@@ -209,21 +209,25 @@
 </li>
 </ol>
 <blockquote>
-<p>为什么Git添加文件需要add，commit一共两步呢？因为commit可以一次提交很多文件，所以你可以多次add不同的文件，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ git add file1.txt</span><br><span class="line">&gt;$ git add file2.txt file3.txt</span><br><span class="line">&gt;$ git commit -m &quot;add 3 files.&quot;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+<p>为什么Git添加文件需要add，commit一共两步呢？因为commit可以一次提交很多文件，所以你可以多次add不同的文件，比如：</p>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add file1.txt</span><br><span class="line">$ git add file2.txt file3.txt</span><br><span class="line">$ git commit -m &quot;add 3 files.&quot;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>仓库状态</p>
 </blockquote>
 <p>先修改一个文件内容 然后 运行<code>git status</code>命令可以查看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p><code>git diff [文件名]</code> 可以进行文件对比历史修改记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff readme.txt</span><br></pre></td></tr></table></figure></p>
+<p><code>git diff [文件名]</code> 可以进行文件对比历史修改记录</p>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff readme.txt</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>提交修改和提交新文件是一样的两步，第一步是<code>git add</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add readme.txt</span><br></pre></td></tr></table></figure></p>
+<p>提交修改和提交新文件是一样的两步，第一步是<code>git add</code></p>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add readme.txt</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><code>git log</code> 查看日志 里面有SHA1的计算的字符串 是  <code>commid id</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure></p>
+<p><code>git log</code> 查看日志 里面有SHA1的计算的字符串 是  <code>commid id</code></p>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
 <p>查看精简版日志可以加上<code>--pretty=oneline</code>参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=oneline</span><br></pre></td></tr></table></figure></p>
   </article>
   <aside class="table-content" id="site-toc">
