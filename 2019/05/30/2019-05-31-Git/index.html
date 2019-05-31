@@ -189,12 +189,42 @@
 <p>版本库也称为<code>仓库</code>，英文：repository，可以简单理解是一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p>
 <p>git创建一个空仓库</p>
 <ol>
-<li><p>在cmd命令窗口操作路径选择先选择到一个文件夹</p>
+<li><p>在cmd命令窗口操作路径选择先选择到一个文件夹(不一定是空文件夹)</p>
 </li>
 <li><p>通过git init 命令就可以创建初始化一个空的仓库</p>
 </li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>在操作git文件时最好用UTF-8进行编码；不建议在windows下用自带的记事本进行编辑文件因为默认会在文件开头加0xefbbbf（十六进制）的字符。建议使用notpad++或者其他，把默认编码设置为UTF-8 without BOM</p>
+<blockquote>
+<p>将文件添加到版本库</p>
+</blockquote>
+<ol>
+<li>在上部创建的仓库文件夹下创建一个文件 readme.txt</li>
+<li><p>用命令<code>git add</code>告诉Git(<code>git add . 表示add全部新文件</code>)，把文件添加到仓库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add readme.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用命令git commit告诉Git，把文件提交到仓库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;wrote a readme file&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>为什么Git添加文件需要add，commit一共两步呢？因为commit可以一次提交很多文件，所以你可以多次add不同的文件，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;$ git add file1.txt</span><br><span class="line">&gt;$ git add file2.txt file3.txt</span><br><span class="line">&gt;$ git commit -m &quot;add 3 files.&quot;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>仓库状态</p>
+</blockquote>
+<p>先修改一个文件内容 然后 运行<code>git status</code>命令可以查看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><code>git diff [文件名]</code> 可以进行文件对比历史修改记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff readme.txt</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>提交修改和提交新文件是一样的两步，第一步是<code>git add</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add readme.txt</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><code>git log</code> 查看日志 里面有SHA1的计算的字符串 是  <code>commid id</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>查看精简版日志可以加上<code>--pretty=oneline</code>参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=oneline</span><br></pre></td></tr></table></figure></p>
   </article>
   <aside class="table-content" id="site-toc">
   <div class="table-content-title">
