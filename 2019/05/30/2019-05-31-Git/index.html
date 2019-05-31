@@ -183,7 +183,18 @@
 <h2 id="配置全局信息-名字和邮箱"><a href="#配置全局信息-名字和邮箱" class="headerlink" title="配置全局信息 名字和邮箱"></a>配置全局信息 名字和邮箱</h2><p>双击Git bash，打开类似命令行窗口的东西，就说明Git安装成功！</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;Your Name&quot;</span><br><span class="line">$ git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure>
 <p>注意git config命令的–global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。</p>
-<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2>
+<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><blockquote>
+<p>什么是版本库</p>
+</blockquote>
+<p>版本库也称为<code>仓库</code>，英文：repository，可以简单理解是一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p>
+<p>git创建一个空仓库</p>
+<ol>
+<li><p>在cmd命令窗口操作路径选择先选择到一个文件夹</p>
+</li>
+<li><p>通过git init 命令就可以创建初始化一个空的仓库</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
   </article>
   <aside class="table-content" id="site-toc">
   <div class="table-content-title">
