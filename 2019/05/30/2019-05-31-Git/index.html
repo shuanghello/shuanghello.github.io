@@ -177,10 +177,6 @@
     Git
   </h1>
   
-    <div class="passage-cover">
-      <figure style="background-image:url(https://git-scm.com/images/logo@2x.png);"></figure>
-    </div>
-  
   <article class="passage-article">
     <p><img src="https://git-scm.com/images/logo@2x.png" alt="logo-w150"></p>
 <h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><p>在windows安装git直接去<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">官网</a>下载安装就行</p>
@@ -188,10 +184,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;Your Name&quot;</span><br><span class="line">$ git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure>
 <p>注意git config命令的–global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。</p>
 <h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><blockquote>
-<p>什么是版本库</p>
+<p><strong>什么是版本库</strong></p>
 </blockquote>
 <p>版本库也称为<code>仓库</code>，英文：repository，可以简单理解是一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p>
-<p>git创建一个空仓库</p>
+<blockquote>
+<p><strong>git创建一个空仓库</strong></p>
+</blockquote>
 <ol>
 <li><p>在cmd命令窗口操作路径选择先选择到一个文件夹(不一定是空文件夹)</p>
 </li>
@@ -200,39 +198,100 @@
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
 <p>在操作git文件时最好用UTF-8进行编码；不建议在windows下用自带的记事本进行编辑文件因为默认会在文件开头加0xefbbbf（十六进制）的字符。建议使用notpad++或者其他，把默认编码设置为UTF-8 without BOM</p>
-<blockquote>
-<p>将文件添加到版本库</p>
+<h2 id="命令操作"><a href="#命令操作" class="headerlink" title="命令操作"></a>命令操作</h2><blockquote>
+<p><strong>将文件添加到版本库</strong></p>
 </blockquote>
 <ol>
 <li>在上部创建的仓库文件夹下创建一个文件 readme.txt</li>
-<li><p>用命令<code>git add</code>告诉Git(<code>git add . 表示add全部新文件</code>)，把文件添加到仓库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add readme.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>用命令git commit告诉Git，把文件提交到仓库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;wrote a readme file&quot;</span><br></pre></td></tr></table></figure>
-</li>
+<li>用命令<code>git add</code>告诉Git(<code>git add . 表示add全部新文件</code>)，把文件添加到仓库：</li>
 </ol>
-<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add readme.txt</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>用命令git commit告诉Git，把文件提交到仓库：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;wrote a readme file&quot;</span><br></pre></td></tr></table></figure>
 <p>为什么Git添加文件需要add，commit一共两步呢？因为commit可以一次提交很多文件，所以你可以多次add不同的文件，比如：</p>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add file1.txt</span><br><span class="line">$ git add file2.txt file3.txt</span><br><span class="line">$ git commit -m &quot;add 3 files.&quot;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>仓库状态</p>
+<p><strong>仓库状态</strong></p>
 </blockquote>
 <p>先修改一个文件内容 然后 运行<code>git status</code>命令可以查看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p><code>git diff [文件名]</code> 可以进行文件对比历史修改记录</p>
+<p><strong><code>git diff [文件名]</code> 可以进行文件对比历史修改记录</strong></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff readme.txt</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>提交修改和提交新文件是一样的两步，第一步是<code>git add</code></p>
+<p><strong>提交修改和提交新文件是一样的两步，第一步是<code>git add</code></strong></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add readme.txt</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><code>git log</code> 查看日志 里面有SHA1的计算的字符串 是  <code>commid id</code></p>
+<p><strong><code>git log</code> 查看日志 里面有SHA1的计算的字符串 是  <code>commit id</code></strong></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
 <p>查看精简版日志可以加上<code>--pretty=oneline</code>参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=oneline</span><br></pre></td></tr></table></figure></p>
+<p><code>git reflog</code>可以记录每一次命令 包括回退版本的操作 (从a现在版本回退到b历史版本 它也会显示a这个版本的信息)</p>
+<blockquote>
+<p><strong>git 回退版本</strong></p>
+</blockquote>
+<p>git用<code>HEAD</code>表示当前版本,上一个版本就是<code>HEAD^</code>，上上一个版本就是<code>HEAD^^</code>，当然往上100个版本写100个^比较容易数不过来，所以写成<code>HEAD~100</code>。</p>
+<p>比如回退上个版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+<p>git也可以根据commit id 进行版本回退</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard 1094a</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>工作区和暂存区</strong></p>
+</blockquote>
+<blockquote>
+<p>工作区（Working Directory）</p>
+</blockquote>
+<p>就是你在电脑里能看到的目录</p>
+<blockquote>
+<p>暂存区</p>
+</blockquote>
+<p>工作区有一个隐藏目录<code>.git</code>，这个不算工作区，而是Git的<code>版本库（Repository）</code>。</p>
+<p>Git的版本库里存了很多东西，其中最重要的就是称为<code>stage（或者叫index）</code>的<strong><code>暂存区</code></strong>，还有Git为我们自动创建的第一个<code>分支master</code>，以及指向master的一个指针叫<code>HEAD</code>。</p>
+<p><code>git add</code>把文件添加进去，实际上就是把文件修改添加到暂存区；</p>
+<p><code>git commit</code>提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
+<p><img src="https://static.liaoxuefeng.com/files/attachments/919020074026336/0" alt></p>
+<blockquote>
+<p><strong>撤销修改</strong><br><code>git checkout -- file</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
+<p>命令<code>git checkout -- readme.txt</code>意思就是，把<code>readme.txt</code>文件在工作区的修改全部撤销，这里有两种情况：</p>
+<p>一种是<code>readme.txt</code>自修改后还没有被放到暂存区，现在，<code>撤销修改就回到和版本库一模一样的状态</code>；</p>
+<p>一种是<code>readme.txt</code>已经添加到暂存区后，又作了修改，现在，<code>撤销修改就回到添加到暂存区后的状态</code>。</p>
+<p>总之，就是让这个文件回到最近一次<code>git commit</code>或<code>git add时</code>的状态。</p>
+<blockquote>
+<p><code>git reset</code>命令既可以回退版本，也可以把暂存区的修改回退到工作区</p>
+</blockquote>
+<p>用命令<code>git reset HEAD &lt;file&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD readme.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>删除文件</strong></p>
+</blockquote>
+<p>使用 <code>git rm [file]</code>命令可以对文件进行删除<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. $ git rm test.txt</span><br><span class="line">2. $ git commit -m &quot;remove test.txt&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><blockquote>
+<p><strong>远程仓库概念和GitHub基本使用准备工作</strong></p>
+</blockquote>
+<p>Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上。怎么分布呢？最早，肯定只有一台机器有一个原始版本库，此后，别的机器可以“克隆”这个原始版本库，而且每台机器的版本库其实都是一样的，并没有主次之分。</p>
+<p>使用GitHub 这个网站就是提供Git仓库托管服务 （也可以自己搭建一个git服务器）</p>
+<p><strong>本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以，需要一点设置：</strong></p>
+<p>使用步骤</p>
+<ol>
+<li>创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>你需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。</p>
+<p>如果一切顺利的话，可以在用户主目录里找到<code>.ssh</code>目录，里面有<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。</p>
+<p>2、登陆GitHub，打开“Account settings”，“SSH Keys”页面：</p>
+<p>然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容</p>
+<blockquote>
+<p>为什么GitHub需要SSH Key呢？因为GitHub需要识别出你推送的提交确实是你推送的，而不是别人冒充的，而Git支持SSH协议，所以，GitHub只要知道了你的公钥，就可以确认只有你自己才能推送。</p>
+<p>当然，GitHub允许你添加多个Key。假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。</p>
+</blockquote>
+<blockquote>
+<p><strong>添加远程库</strong></p>
+</blockquote>
   </article>
   <aside class="table-content" id="site-toc">
   <div class="table-content-title">
@@ -240,7 +299,7 @@
     <span>目录</span>
   </div>
   <div class="table-content-main">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装git"><span class="toc-text">安装git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置全局信息-名字和邮箱"><span class="toc-text">配置全局信息 名字和邮箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建版本库"><span class="toc-text">创建版本库</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装git"><span class="toc-text">安装git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置全局信息-名字和邮箱"><span class="toc-text">配置全局信息 名字和邮箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建版本库"><span class="toc-text">创建版本库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令操作"><span class="toc-text">命令操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程仓库"><span class="toc-text">远程仓库</span></a></li></ol>
   </div>
 </aside>
   
