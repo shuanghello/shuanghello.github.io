@@ -245,7 +245,9 @@
 <p><code>git commit</code>提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
 <p><img src="https://static.liaoxuefeng.com/files/attachments/919020074026336/0" alt></p>
 <blockquote>
-<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a><strong>撤销修改</strong></h3><p><code>git checkout -- file</code></p>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a><strong>撤销修改</strong></h3></blockquote>
+<blockquote>
+<p><code>git checkout -- file</code></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
 <p>命令<code>git checkout -- readme.txt</code>意思就是，把<code>readme.txt</code>文件在工作区的修改全部撤销，这里有两种情况：</p>
@@ -321,7 +323,56 @@
 <p>Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。</p>
 <p>使用https除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用ssh协议而只能用https。</p>
 <p>Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><blockquote>
+<h3 id="分支介绍"><a href="#分支介绍" class="headerlink" title="分支介绍"></a><strong>分支介绍</strong></h3></blockquote>
+<p>分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。</p>
+<p>现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。</p>
+<p>其他版本控制系统如SVN等都有分支管理，但是用过之后你会发现，这些版本控制系统创建和切换分支比蜗牛还慢，简直让人无法忍受，结果分支功能成了摆设，大家都不去用。</p>
+<p>但Git的分支是与众不同的，无论创建、切换和删除分支，Git在1秒钟之内就能完成！无论你的版本库是1个文件还是1万个文件。</p>
+<blockquote>
+<h3 id="分支的创建和操作"><a href="#分支的创建和操作" class="headerlink" title="分支的创建和操作"></a><strong>分支的创建和操作</strong></h3></blockquote>
+<p>主分支，即master分支</p>
+<p>HEAD严格来说不是指向提交，而是指向master</p>
+<p>HEAD指向的就是当前分支</p>
+<p><img src="https://static.liaoxuefeng.com/files/attachments/919022325462368/0" alt></p>
+<p>当我们创建新的分支，例如dev时，Git新建了一个指针叫dev，指向master相同的提交，再把HEAD指向dev，就表示当前分支在dev上：</p>
+<p><img src="https://static.liaoxuefeng.com/files/attachments/919022363210080/0" alt></p>
+<p>从现在开始，对工作区的修改和提交就是针对dev分支了，比如新提交一次后，dev指针往前移动一步，而master指针不变：</p>
+<p><img src="https://static.liaoxuefeng.com/files/attachments/919022387118368/0" alt></p>
+<p>假如我们在dev上的工作完成了，就可以把dev合并到master上。Git怎么合并呢？最简单的方法，就是直接把master指向dev的当前提交，就完成了合并：</p>
+<p><img src="https://static.liaoxuefeng.com/files/attachments/919022412005504/0" alt></p>
+<p>合并完分支后，甚至可以删除dev分支。删除dev分支就是把dev指针给删掉，删掉后，我们就剩下了一条master分支：</p>
+<p><img src="https://static.liaoxuefeng.com/files/attachments/919022479428512/0" alt></p>
+<blockquote>
+<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a><strong>创建分支</strong></h3></blockquote>
+<p>创建dev分支，然后切换到dev分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b dev</span><br></pre></td></tr></table></figure>
+<p>git checkout命令加上-b参数表示创建并切换，相当于以下两条命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch dev</span><br><span class="line">$ git checkout dev</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a><strong>查看分支</strong></h3></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a><strong>合并分支</strong></h3></blockquote>
+<p>切换回master分支，执行要合并的分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge dev</span><br></pre></td></tr></table></figure>
+<p><code>git merge</code>命令用于合并指定分支到当前分支。</p>
+<blockquote>
+<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a><strong>删除分支</strong></h3></blockquote>
+<p>删除分支： <code>git branch -d &lt;name&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d dev</span><br></pre></td></tr></table></figure>
+<p>强制禁用Fast forward模式</p>
+<p>准备合并dev分支，请注意–no-ff参数，表示禁用Fast forward</p>
+<p>因为本次合并要创建一个新的commit，所以加上-m参数，把commit描述写进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge --no-ff -m &quot;merge with no-ff&quot; dev</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="分支策略"><a href="#分支策略" class="headerlink" title="分支策略"></a><strong>分支策略</strong></h3></blockquote>
+<p>在实际开发中，我们应该按照几个基本原则进行分支管理：</p>
+<p>首先，<code>master</code>分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；</p>
+<p>那在哪干活呢？干活都在<code>dev</code>分支上，也就是说，<code>dev</code>分支是不稳定的，到某个时候，比如1.0版本发布时，再把<code>dev</code>分支合并到<code>master</code>上，在<code>master</code>分支发布1.0版本；</p>
+<p>你和你的小伙伴们每个人都在<code>dev</code>分支上干活，每个人都有自己的分支，时不时地往<code>dev</code>分支上合并就可以了。</p>
+<p>所以，团队合作的分支看起来就像这样：</p>
+<p><img src="https://www.liaoxuefeng.com/files/attachments/919023260793600/0" alt></p>
   </article>
   <aside class="table-content" id="site-toc">
   <div class="table-content-title">
@@ -329,7 +380,7 @@
     <span>目录</span>
   </div>
   <div class="table-content-main">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装git"><span class="toc-text">安装git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置全局信息-名字和邮箱"><span class="toc-text">配置全局信息 名字和邮箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建版本库"><span class="toc-text">创建版本库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是版本库"><span class="toc-text">什么是版本库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git创建一个空仓库"><span class="toc-text">git创建一个空仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令操作"><span class="toc-text">命令操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将文件添加到版本库"><span class="toc-text">将文件添加到版本库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仓库状态"><span class="toc-text">仓库状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-diff-文件名-可以进行文件对比历史修改记录"><span class="toc-text">git diff [文件名] 可以进行文件对比历史修改记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提交修改和提交新文件是一样的两步，第一步是git-add"><span class="toc-text">提交修改和提交新文件是一样的两步，第一步是git add</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-log-查看日志-里面有SHA1的计算的字符串-是-commit-id"><span class="toc-text">git log 查看日志 里面有SHA1的计算的字符串 是  commit id</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-回退版本"><span class="toc-text">git 回退版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工作区和暂存区"><span class="toc-text">工作区和暂存区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#撤销修改"><span class="toc-text">撤销修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除文件"><span class="toc-text">删除文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程仓库"><span class="toc-text">远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#远程仓库概念和GitHub基本使用准备工作"><span class="toc-text">远程仓库概念和GitHub基本使用准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加远程库"><span class="toc-text">添加远程库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支管理"><span class="toc-text">分支管理</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装git"><span class="toc-text">安装git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置全局信息-名字和邮箱"><span class="toc-text">配置全局信息 名字和邮箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建版本库"><span class="toc-text">创建版本库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是版本库"><span class="toc-text">什么是版本库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git创建一个空仓库"><span class="toc-text">git创建一个空仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令操作"><span class="toc-text">命令操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将文件添加到版本库"><span class="toc-text">将文件添加到版本库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仓库状态"><span class="toc-text">仓库状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-diff-文件名-可以进行文件对比历史修改记录"><span class="toc-text">git diff [文件名] 可以进行文件对比历史修改记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提交修改和提交新文件是一样的两步，第一步是git-add"><span class="toc-text">提交修改和提交新文件是一样的两步，第一步是git add</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-log-查看日志-里面有SHA1的计算的字符串-是-commit-id"><span class="toc-text">git log 查看日志 里面有SHA1的计算的字符串 是  commit id</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-回退版本"><span class="toc-text">git 回退版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工作区和暂存区"><span class="toc-text">工作区和暂存区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#撤销修改"><span class="toc-text">撤销修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除文件"><span class="toc-text">删除文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程仓库"><span class="toc-text">远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#远程仓库概念和GitHub基本使用准备工作"><span class="toc-text">远程仓库概念和GitHub基本使用准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加远程库"><span class="toc-text">添加远程库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支管理"><span class="toc-text">分支管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分支介绍"><span class="toc-text">分支介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支的创建和操作"><span class="toc-text">分支的创建和操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建分支"><span class="toc-text">创建分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看分支"><span class="toc-text">查看分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并分支"><span class="toc-text">合并分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除分支"><span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支策略"><span class="toc-text">分支策略</span></a></li></ol></li></ol>
   </div>
 </aside>
   
